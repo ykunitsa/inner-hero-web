@@ -1,10 +1,11 @@
 "use client";
 
 import { createContext, useContext, useEffect, useState } from "react";
-import { refreshToken } from "@/utils/auth";
+import { getCurrentUser, refreshToken } from "@/utils/auth";
 import { useSelector, useDispatch } from "react-redux";
 import { setAccessToken as setReduxAccessToken } from "@/redux/authSlice";
 import { RootState } from "@/redux/store";
+import { setUser, UserState } from "@/redux/userSlice";
 
 type AuthContextType = {
   accessToken: string | null;
@@ -23,11 +24,17 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     dispatch(setReduxAccessToken(token));
   };
 
+  const setCurrentUser = (user: UserState) => {
+    dispatch(setUser(user));
+  };
+
   useEffect(() => {
     const fetchToken = async () => {
       try {
         const token = await refreshToken();
         setAccessToken(token);
+        const user = await getCurrentUser();
+        setCurrentUser(user);
       } catch (error) {
         console.error("Failed to refresh token", error);
       } finally {

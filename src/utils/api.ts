@@ -3,7 +3,7 @@ import { store } from "@/redux/store";
 import { setAccessToken, clearAccessToken } from "@/redux/authSlice";
 import { refreshToken } from "@/utils/auth";
 
-const API_URL = "http://localhost:3000/api";
+const API_URL = "http://localhost:5010/api";
 
 const api = axios.create({
   baseURL: API_URL,

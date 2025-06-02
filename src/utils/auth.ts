@@ -30,3 +30,8 @@ export const refreshToken = async () => {
 
   return accessToken;
 };
+
+export const getCurrentUser = async () => {
+  const response = await api.get("users/me");
+  return response.data.user;
+};
