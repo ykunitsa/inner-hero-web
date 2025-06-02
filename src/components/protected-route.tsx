@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { useAuth } from "./AuthContext";
+import { useAuth } from "./auth-context";
 import { useRouter } from "next/navigation";
 
 export default function ProtectedRoute({

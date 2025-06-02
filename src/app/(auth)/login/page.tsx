@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { useAuth } from "@/components/AuthContext";
+import { useAuth } from "@/components/auth-context";
 import Link from "next/link";
 
 export default function LoginPage() {
